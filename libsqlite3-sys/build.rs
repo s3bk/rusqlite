@@ -392,6 +392,8 @@ impl From<HeaderLocation> for String {
                 });
                 header.push_str(if cfg!(feature = "loadable_extension") {
                     "/sqlite3ext.h"
+                } else if cfg!(any(feature = "sqlcipher", feature = "bundled-sqlcipher")) {
+                    "/sqlcipher.h"
                 } else {
                     "/sqlite3.h"
                 });
@@ -408,6 +410,8 @@ impl From<HeaderLocation> for String {
                 path,
                 if cfg!(feature = "loadable_extension") {
                     "sqlite3ext.h"
+                } else if cfg!(any(feature = "sqlcipher", feature = "bundled-sqlcipher")) {
+                    "/sqlcipher.h"
                 } else {
                     "sqlite3.h"
                 }
