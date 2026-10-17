@@ -184,7 +184,7 @@ mod build_bundled {
             let host = env::var("HOST").unwrap();
 
             let is_windows = host.contains("windows") && target.contains("windows");
-            let is_apple = host.contains("apple") && target.contains("apple");
+            let is_apple = target.contains("apple");
 
             let lib_dir = env("OPENSSL_LIB_DIR").map(PathBuf::from);
             let inc_dir = env("OPENSSL_INCLUDE_DIR").map(PathBuf::from);
